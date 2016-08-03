@@ -30,7 +30,6 @@ ln -sf . %{name}-%{version}
 %setup -T -D
 
 %build
-make %{?_smp_mflags} all
 
 %install
 make install DESTDIR=%{buildroot}
@@ -39,7 +38,7 @@ make install DESTDIR=%{buildroot}
 %doc README.md
 %defattr(-,root,root,-)
 %attr(0664,root,root) /etc/qubes-rpc/qubes.Dom0Shell
-%attr(0664,root,qubes) %config{noreplace} /etc/qubes-rpc/policy/qubes.Dom0Shell
+%attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.Dom0Shell
 
 %package client
 Summary:    Simple client for Qubes Dom0 Shell RPC service
