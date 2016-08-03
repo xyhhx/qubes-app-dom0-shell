@@ -1,0 +1,2 @@
+#!/bin/bash
+socat -,raw,echo=0 "exec:/usr/lib/qubes/qrexec-client-vm dom0 qubes.Dom0Shell"

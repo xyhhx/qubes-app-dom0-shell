@@ -1,0 +1,1 @@
+/usr/bin/socat - exec:/bin/bash,pty,setsid,setpgid,stderr,ctty
