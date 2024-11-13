@@ -1,0 +1,9 @@
+# Uncomment one of the following lines, or write your own policy based on them
+# Obviously, use EXTREME caution with this, as whichever domain you grant
+# permissions to can have full control over dom0, and thus your whole system.
+
+# qubes.Dom0Shell  *  @anyvm       @default  ask  default_target=dom0
+# qubes.Dom0Shell  *  sys-gui      @default  allow target=dom0 notify=yes
+# qubes.Dom0Shell  *  sys-gui-gpu  @default  allow target=dom0 notify=yes
+
+qubes.Dom0Shell  *  @anyvm  @anyvm    deny notify=yes

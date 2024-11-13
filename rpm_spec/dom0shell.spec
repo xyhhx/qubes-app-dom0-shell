@@ -7,17 +7,17 @@
 %define _builddir %(pwd)
 %endif
     
-Name:		qubes-app-dom0-shell
-Version:	%{version}
-Release:	1%{?dist}
-Summary:	Qubes Dom0 Shell RPC Provider
+Name:     qubes-app-dom0-shell
+Version:  %{version}
+Release:  1%{?dist}
+Summary:  Qubes Dom0 Shell RPC Provider
 
-Group:		System Environment/Daemons
-License:	GPLv2
-URL:		https://www.qubes-os.org/
+Group:    System Environment/Daemons
+License:  GPLv2
+URL:      https://www.qubes-os.org/
 
-Requires:   socat
-BuildRequires:  systemd
+Requires:      socat
+BuildRequires: systemd
 
 %description
 A simple Qubes RPC endpoint which implements an RPC endpoint serving a Dom0 shell.
@@ -37,13 +37,13 @@ make install DESTDIR=%{buildroot}
 %files
 %doc README.md
 %defattr(-,root,root,-)
-%attr(0664,root,root) /etc/qubes-rpc/qubes.Dom0Shell
-%attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.Dom0Shell
+%attr(0755,root,root) /etc/qubes-rpc/qubes.Dom0Shell
+%attr(0644,root,qubes) %config(noreplace) /etc/qubes/policy.d/qubes.Dom0Shell
 
 %package client
-Summary:    Simple client for Qubes Dom0 Shell RPC service
-Requires:   socat
-BuildRequires:  systemd
+Summary:       Simple client for Qubes Dom0 Shell RPC service
+Requires:      socat
+BuildRequires: systemd
 
 %description client
 A simple client script to invoke socat and the Qubes Dom0 Shell RPC endpoint service and drop a Dom0 shell.
@@ -51,7 +51,7 @@ A simple client script to invoke socat and the Qubes Dom0 Shell RPC endpoint ser
 %files client
 %doc README.md
 %defattr(-,root,qubes,-)
-%attr(0775,root,qubes) /usr/local/bin/qubes-dom0-shell
+%attr(0755,root,qubes) /usr/local/bin/qubes-dom0-shell
 
 %changelog
 
