@@ -18,15 +18,20 @@ The client package has just one simple script: `qubes-dom0-shell` that invokes s
 ### How to Install
 
 1. Clone or download this repo into any qube (for example a disposable VM)
+
 1. The `Makefile` in the root directory detects the current qube's name and runs the appropriate installer
 
-- If you're anal, you can manually run the appropriate `make install` tasks. For dom0, run `make install` in `./src/dom0`. In the desired domU, run the `make install` task found in `./src/domU`
+   - If you're anal, you can manually run the appropriate `make install` tasks. For dom0, run `make install` in `./src/dom0`. In the desired domU, run the `make install` task found in `./src/domU`
 
-1. Configure your RPC policies. By default, the dom0 installation task configures a policy that lets any VM ask to SSH into dom0, but you should change that:
+1. Configure your RPC policies. By default, the dom0 installation task installs a policy that doesn't allow any VMs to get a shell. There are a few example rules in the policy file which you can make use of, or write your own:
 
    ```diff
-   - qubes.Dom0Shell  *  @anyvm  @default  ask default_target=dom0
-   + qubes.Dom0Shell  *  sys-gui  @default  ask default_target=dom0
+   # qubes.Dom0Shell  *  @anyvm       @default  ask  default_target=dom0
+   # qubes.Dom0Shell  *  sys-gui      @default  allow target=dom0 notify=yes
+   # qubes.Dom0Shell  *  sys-gui-gpu  @default  allow target=dom0 notify=yes
+
+   + qubes.Dom0Shell  *  my-super-privileged-qube  @default  ask default_target=dom0
+
    qubes.Dom0Shell  *  @anyvm  @anyvm    deny notify=yes
    ```
 
