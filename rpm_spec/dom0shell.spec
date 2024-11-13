@@ -13,7 +13,7 @@ Release:  1%{?dist}
 Summary:  Qubes Dom0 Shell RPC Provider
 
 Group:    System Environment/Daemons
-License:  GPLv2
+License:  HL3-FULL
 URL:      https://www.qubes-os.org/
 
 Requires:      socat
